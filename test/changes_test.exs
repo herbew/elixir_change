@@ -16,9 +16,10 @@ defmodule ChangeTest do
 	end #test "2. The flexible coins with 1, [1,3,10]" do
 	
 	@tag :pending
-	test "3. The coins with error, [2,3,10]" do
+	test "3. The coins with error, if the target is negative or smaller" do
 		coins = [2,3,10]
 		assert Change.generate(1, coins) == {:error, "cannot change"}
+		assert Change.generate(-1, coins) == {:error, "cannot change"}
 	end #test "3. The coins with error, [2,3,10]" do
 	
 end
